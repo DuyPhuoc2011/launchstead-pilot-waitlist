@@ -1,0 +1,58 @@
+{
+  "version": "v1alpha1",
+  "region": "asia-southeast1",
+  "services": [
+    {
+      "name": "web",
+      "stack": "nextjs",
+      "repository": "github.com/OWNER/launchstead-pilot-waitlist",
+      "directory": "apps/web",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "healthPath": "/api/health",
+      "secrets": ["ADMIN_PASSWORD"],
+      "access": "public"
+    },
+    {
+      "name": "api",
+      "stack": "nestjs",
+      "repository": "github.com/OWNER/launchstead-pilot-waitlist",
+      "directory": "apps/api",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 8080,
+      "healthPath": "/health",
+      "secrets": ["DATABASE_URL"],
+      "access": "private"
+    }
+  ],
+  "databases": [
+    {
+      "name": "main",
+      "engine": "postgres",
+      "migrationService": "api",
+      "migrationCommand": "npx prisma migrate deploy"
+    }
+  ],
+  "environments": [
+    {
+      "name": "staging",
+      "branch": "main",
+      "scaling": {
+        "web": { "minInstances": 0, "maxInstances": 2, "concurrency": 80, "cpu": "1", "memory": "512Mi" },
+        "api": { "minInstances": 0, "maxInstances": 2, "concurrency": 40, "cpu": "1", "memory": "512Mi" }
+      },
+      "databases": { "main": { "highAvailability": false } }
+    },
+    {
+      "name": "production",
+      "branch": "main",
+      "scaling": {
+        "web": { "minInstances": 0, "maxInstances": 2, "concurrency": 80, "cpu": "1", "memory": "512Mi" },
+        "api": { "minInstances": 0, "maxInstances": 2, "concurrency": 40, "cpu": "1", "memory": "512Mi" }
+      },
+      "databases": { "main": { "highAvailability": false } }
+    }
+  ]
+}

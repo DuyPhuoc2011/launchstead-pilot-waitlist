@@ -1,0 +1,6 @@
+{
+  "name": "waitlist",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "engines": { "node": "22.x" }
+}

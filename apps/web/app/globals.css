@@ -1,0 +1,25 @@
+:root {
+  --bg: #f6f4ef;
+  --ink: #1d1b16;
+  --muted: #6b665a;
+  --accent: #2f5d50;
+  --err: #a33a2a;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 Georgia, "Times New Roman", serif; }
+.wrap { max-width: 40rem; margin: 0 auto; padding: 18vh 1rem 4rem; }
+.eyebrow { font: 600 0.8rem/1 system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.05; margin: 0.4em 0; }
+.lede { color: var(--muted); max-width: 32rem; }
+.form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; font-family: system-ui, sans-serif; }
+input { flex: 1 1 16rem; padding: 0.75rem 0.9rem; border: 1px solid #c9c3b4; border-radius: 6px; font: inherit; background: #fff; }
+button { padding: 0.75rem 1.2rem; border: 0; border-radius: 6px; background: var(--accent); color: #fff; font: 600 1rem system-ui, sans-serif; cursor: pointer; }
+button:disabled { opacity: 0.6; }
+input:focus-visible, button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: 2px; }
+.note { flex-basis: 100%; margin: 0.5rem 0 0; font-family: system-ui, sans-serif; }
+.ok { color: var(--accent); font-weight: 600; margin-top: 2rem; }
+.err { color: var(--err); }
+table { width: 100%; border-collapse: collapse; font: 0.95rem system-ui, sans-serif; margin-top: 1.5rem; }
+th, td { text-align: left; padding: 0.5rem 0; border-bottom: 1px solid #ddd6c6; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
