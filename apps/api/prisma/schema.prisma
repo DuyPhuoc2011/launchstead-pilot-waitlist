@@ -15,3 +15,11 @@ model Signup {
 
   @@map("signups")
 }
+
+model Referral {
+  id        Int      @id @default(autoincrement())
+  code      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("referrals")
+}
